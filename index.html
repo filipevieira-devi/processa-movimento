@@ -36,23 +36,53 @@
          </select>
 		 
 		 </div>
+		 
+		 
       <div class="row justify-content-start">
 		<div class="col-sm-4">
          <input class="form-control" type="text" placeholder="Movimento" id="Mov">
 			</div>
-      <div class="col-sm-3">
+		<div class="col-sm-3">
          <input class="form-control" type="text" placeholder="PDV" id="PDV">
 			</div>
-      <div class="col-sm-4">
+		<div class="col-sm-4">
          <input class="form-control" type="text" placeholder="Cupom" id="Cupom">
 			</div>
-      <div class="row">
+		<div class="row">
       	  <div class="col-sm-4">
-			<button class="btn btn-primary btn-lg" onclick="enviarDados()">Enviar</button>
+			<button class="btn btn-primary" onclick="enviarDados()">Enviar</button>
 			</div>
 			
-      <div id="resposta">
-		</div>
+			
+			
+		<h3>Resultado</h3>
+
+<div class="row">
+<div class="col"><p><strong>Codigo do Status</strong></p>
+		<div id="CodigoStatus"></div></div>
+<div class="col"><p><strong>Descrição do Status</strong></p>
+		<div id="DescricaoStatus"></div></div>
+<div class="col"><p><strong>Quantidade Cupons PDV</strong></p>
+		<div id="QtdCuponsERP"></div></div>
+<div class="col"><p><strong>Quantidade Cupons PDV</strong></p>
+		<div id="QtdCuponsPDV"></div></div>
+<div class="col"><p><strong>Cupons com erro</strong></p>
+		<div id="CuponsComErro"></div></div>
+</div>
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="row">
+      	  <div class="col-sm-4">
+			<button class="btn btn-success"
+		<input type="button" value="Botão de Atualizar" onClick="window.location.reload()">Nova Requisição</div>
       
 	  <script>
          function enviarDados() {
@@ -67,7 +97,17 @@
          	xhr.onreadystatechange = function() {
          		if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
          			var resposta = (xhr.responseText);
-         				document.getElementById("resposta").innerHTML = resposta;
+					r = JSON.parse(resposta);
+						CodigoStatus = r.CodigoStatus;
+						DescricaoStatus = r.DescricaoStatus;
+						QtdCuponsPDV = r.QtdCuponsPDV;
+						QtdCuponsERP = r.QtdCuponsERP;
+						CuponsComErro = r.CuponsComErro
+							document.getElementById("CodigoStatus").innerHTML = CodigoStatus
+							document.getElementById("DescricaoStatus").innerHTML = DescricaoStatus
+							document.getElementById("QtdCuponsPDV").innerHTML = QtdCuponsPDV
+							document.getElementById("QtdCuponsERP").innerHTML = QtdCuponsERP
+							document.getElementById("CuponsComErro").innerHTML = CuponsComErro
          		}
          	};
          	xhr.send();
