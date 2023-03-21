@@ -90,7 +90,7 @@
          	var Mov = document.getElementById("Mov").value;
          	var PDV = document.getElementById("PDV").value;
          	var Cupom = document.getElementById("Cupom").value;
-         	var url = "https://appdevi-api.trafficmanager.net/odata/ProcessaMovimento(id_aplicativo="+Miniso+",numero_movimento="+Mov+",numero_caixa="+PDV+",numero_cupom="+Cupom+")";
+         	var url = "http://appdevi3-implantacao.azurewebsites.net/odata/ProcessaMovimento(id_aplicativo="+Miniso+",numero_movimento="+Mov+",numero_caixa="+PDV+",numero_cupom="+Cupom+")";
          	var xhr = new XMLHttpRequest();
          	xhr.open("POST", url, true);
          	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
